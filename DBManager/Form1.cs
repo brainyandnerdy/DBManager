@@ -31,5 +31,10 @@ namespace DBManager
         {
 
         }
+
+        private void connectButton_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

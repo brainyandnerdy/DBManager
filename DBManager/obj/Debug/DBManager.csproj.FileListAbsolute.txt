@@ -1,0 +1,11 @@
+F:\Proiecte\DBManager\DBManager\bin\Debug\DBManager.exe.config
+F:\Proiecte\DBManager\DBManager\bin\Debug\DBManager.exe
+F:\Proiecte\DBManager\DBManager\bin\Debug\DBManager.pdb
+F:\Proiecte\DBManager\DBManager\obj\Debug\DBManager.csprojResolveAssemblyReference.cache
+F:\Proiecte\DBManager\DBManager\obj\Debug\DBManager.Form1.resources
+F:\Proiecte\DBManager\DBManager\obj\Debug\DBManager.Form2.resources
+F:\Proiecte\DBManager\DBManager\obj\Debug\DBManager.Properties.Resources.resources
+F:\Proiecte\DBManager\DBManager\obj\Debug\DBManager.csproj.GenerateResource.Cache
+F:\Proiecte\DBManager\DBManager\obj\Debug\DBManager.csproj.CoreCompileInputs.cache
+F:\Proiecte\DBManager\DBManager\obj\Debug\DBManager.exe
+F:\Proiecte\DBManager\DBManager\obj\Debug\DBManager.pdb
