@@ -17,7 +17,18 @@ namespace DBManager
         string database = "mydb";
         string userId = "root";
         string password = "root";
-        string connection;
+
+        public string getConnectionInfo()
+        {
+            string connection;
+            server = textBox1.Text;
+            userId = textBox2.Text;
+            password = textBox4.Text;
+            database = textBox3.Text;
+            connection = "Server=" + server + ";Database=" + database + ";Uid=" + userId + ";Pwd=" + password;
+            return connection;
+        }
+
 
         public Form1()
         {
@@ -40,25 +51,16 @@ namespace DBManager
         }
 
         private void connectButton_Click(object sender, EventArgs e)
-        {
-            /*
-            DBConnect link = new DBConnect();
-            link.Initialize();
-            */
-            server = textBox1.Text;
-            userId = textBox2.Text;
-            password = textBox4.Text;
-            database = textBox3.Text;
-            connection = "Server=" + server + ";Database=" + database + ";Uid=" + userId + ";Pwd=" + password;
+        {        
             
             try
-            {
-
-                MySqlConnection dbcon = new MySqlConnection(connection);
+            {                
+                MySqlConnection dbcon = new MySqlConnection(getConnectionInfo());
                 dbcon.Open();
                 DataSet ds = new DataSet();
                 MessageBox.Show("Connected");
                 openTableButton.Enabled = true;
+                queryButton.Enabled = true;
                 dbcon.Close();
             }
             catch (Exception ex)
@@ -113,16 +115,17 @@ namespace DBManager
 
         private void openTableButton_Click(object sender, EventArgs e)
         {
+            string tableName;
+            tableName = tableNameTextBox.Text;
             try
             {
-
-                MySqlConnection dbcon = new MySqlConnection(connection);
+                MySqlConnection dbcon = new MySqlConnection(getConnectionInfo());
                 dbcon.Open();
                 DataSet ds = new DataSet();
                 DataTable dt = new DataTable();
                 MySqlCommand cmd;
                 cmd = dbcon.CreateCommand();
-                cmd.CommandText = "SELECT * FROM movies";
+                cmd.CommandText = "SELECT * FROM " + tableName;
                 MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                 adapter.Fill(dt);
                 dataGridView1.DataSource = dt;
@@ -134,6 +137,32 @@ namespace DBManager
                 MessageBox.Show(ex.Message);
             }
 
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void queryButton_Click(object sender, EventArgs e)
+        {
+            string query;
+            query = queryTextBox.Text;
+            try
+            {
+                MySqlConnection dbcon = new MySqlConnection(getConnectionInfo());
+                dbcon.Open();
+                MySqlCommand cmd = new MySqlCommand(query, dbcon);
+                cmd = dbcon.CreateCommand();
+                cmd.CommandText = query;
+                cmd.ExecuteReader();
+                MessageBox.Show("This query was passed: \n" + query);
+                dbcon.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

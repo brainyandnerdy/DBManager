@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
             this.connectButton = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.openTableButton = new System.Windows.Forms.Button();
@@ -40,29 +39,23 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.queryButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.queryTextBox = new System.Windows.Forms.TextBox();
+            this.tableNameTextBox = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(333, 276);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Sign out";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // connectButton
             // 
-            this.connectButton.Location = new System.Drawing.Point(252, 276);
+            this.connectButton.Location = new System.Drawing.Point(248, 317);
             this.connectButton.Name = "connectButton";
-            this.connectButton.Size = new System.Drawing.Size(75, 23);
+            this.connectButton.Size = new System.Drawing.Size(160, 23);
             this.connectButton.TabIndex = 1;
             this.connectButton.Text = "Connect";
             this.connectButton.UseVisualStyleBackColor = true;
@@ -161,14 +154,16 @@
             this.textBox4.TabIndex = 11;
             this.textBox4.Text = "root";
             // 
-            // button4
+            // queryButton
             // 
-            this.button4.Location = new System.Drawing.Point(333, 471);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 12;
-            this.button4.Text = "Query";
-            this.button4.UseVisualStyleBackColor = true;
+            this.queryButton.Enabled = false;
+            this.queryButton.Location = new System.Drawing.Point(333, 471);
+            this.queryButton.Name = "queryButton";
+            this.queryButton.Size = new System.Drawing.Size(75, 23);
+            this.queryButton.TabIndex = 12;
+            this.queryButton.Text = "Query";
+            this.queryButton.UseVisualStyleBackColor = true;
+            this.queryButton.Click += new System.EventHandler(this.queryButton_Click);
             // 
             // label5
             // 
@@ -206,16 +201,52 @@
             this.dataGridView1.TabIndex = 16;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(0, 0);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(100, 20);
+            this.textBox6.TabIndex = 17;
+            // 
+            // queryTextBox
+            // 
+            this.queryTextBox.Location = new System.Drawing.Point(99, 346);
+            this.queryTextBox.Multiline = true;
+            this.queryTextBox.Name = "queryTextBox";
+            this.queryTextBox.Size = new System.Drawing.Size(309, 119);
+            this.queryTextBox.TabIndex = 18;
+            // 
+            // tableNameTextBox
+            // 
+            this.tableNameTextBox.Location = new System.Drawing.Point(180, 22);
+            this.tableNameTextBox.Name = "tableNameTextBox";
+            this.tableNameTextBox.Size = new System.Drawing.Size(147, 20);
+            this.tableNameTextBox.TabIndex = 19;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(109, 25);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(65, 13);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "Table Name";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1102, 506);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.tableNameTextBox);
+            this.Controls.Add(this.queryTextBox);
+            this.Controls.Add(this.textBox6);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.queryButton);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
@@ -227,7 +258,6 @@
             this.Controls.Add(this.openTableButton);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.connectButton);
-            this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -237,8 +267,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button connectButton;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button openTableButton;
@@ -250,11 +278,15 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button queryButton;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox queryTextBox;
+        private System.Windows.Forms.TextBox tableNameTextBox;
+        private System.Windows.Forms.Label label6;
     }
 }
 
